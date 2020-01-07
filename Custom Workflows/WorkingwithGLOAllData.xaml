@@ -1,0 +1,153 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WorkingwithGLOAllData"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_StartDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_EndDate" Type="InArgument(x:String)" />
+    <x:Property Name="in_GLOTemplatePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentFiscalMonth" Type="InArgument(x:String)" />
+    <x:Property Name="in_CurrentFiscalYear" Type="InArgument(x:String)" />
+    <x:Property Name="in_DownloadPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>WorkingwithGLOAllData_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.Office.Interop.Excel</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Credentials.Activities</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.FTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Office.Interop.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.FTP.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Working with GLO All Data Sequence" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="TestDT" />
+    </Sequence.Variables>
+    <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[in_GLOTemplatePath+&quot;GLO_&quot;+in_CurrentFiscalMonth+&quot;’&quot;+in_CurrentFiscalYear+&quot;_YTD_DASHBOARD.xlsx&quot;]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="&#xA;Dim excel As Microsoft.Office.Interop.Excel.Application&#xA;Dim wb1 As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim wb As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim ws As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim ws1 As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim ws2 As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim rng As Microsoft.Office.Interop.Excel.Range &#xA;Dim lastRow As Integer&#xA;Try&#xA;&#xA;&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA;  excel.DisplayAlerts=False&#xA;  excel.Visible=True&#xA; wb1=excel.Workbooks.Open(arg_GLOTemplatePath+&quot;GLO_&quot;+arg_CurrentMonth+&quot;’&quot;+arg_CurrentYear+&quot;_YTD_DASHBOARD.xlsx&quot;)&#xA; wb1.SaveAs(Filename:=arg_GLOTemplatePath+&quot;GLO_&quot;+arg_CurrentMonth+&quot;’&quot;+arg_CurrentYear+&quot;_YTD_DASHBOARD.xlsb&quot;,FileFormat:=Microsoft.Office.Interop.Excel.XlFileFormat.xlExcel12)&#xA; 'excel.Visible=True&#xA;&#xA;Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; 'logMessage.Message = es.Message&#xA; 'UiPath.Core.Activities.LogMessage.Equals&#xA; Throw es&#xA;Finally&#xA; &#xA; wb1.Close&#xA; excel.Quit&#xA; &#xA;End Try&#xA;&#xA; " DisplayName="Invoke Code-conversion" sap2010:WorkflowViewState.IdRef="InvokeCode_4">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_GLOTemplatePath">[in_GLOTemplatePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_CurrentMonth">[in_CurrentFiscalMonth]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_CurrentYear">[in_CurrentFiscalYear]</InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="File converted to xlsb" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="&#xA;Dim excel As microsoft.Office.Interop.Excel.Application&#xA;&#xA;Dim wb1 As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim wb As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim ws As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim ws1 As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim ws2 As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim rng As Microsoft.Office.Interop.Excel.Range &#xA;Dim lastRow As Integer&#xA;Try&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA;  excel.DisplayAlerts=False&#xA; wb1=excel.Workbooks.Open(arg_downloadPath+&quot;GLO TAT Report_&quot;+arg_CurrentMonth+&quot;'&quot;+arg_CurrentYear+&quot;.xlsb&quot;)&#xA; excel.Visible=True&#xA;  excel.DisplayAlerts=False&#xA; ws=CType(wb1.Sheets(&quot;Report 1&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA;  &#xA;   lastRow = ws.UsedRange.Rows.Count&#xA; ws.Range(&quot;1:3&quot;).Delete&#xA;ws.Range(&quot;A1&quot;).EntireColumn.Delete&#xA;'Console.WriteLine(&quot;done&quot;)&#xA;&#xA;rng = ws.UsedRange.Find(&quot;Task Closed Date (Date)&quot;)&#xA;ws.Range(&quot;A1&quot;,&quot;AL&quot;+lastRow.ToString).AutoFilter(microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlFilterValues)&#xA;ws.UsedRange.Select()&#xA;ws.UsedRange.Sort(Key1:=rng,Order1:=Microsoft.Office.Interop.Excel.XlSortOrder.xlAscending,Header:=Microsoft.Office.Interop.Excel.XlYesNoGuess.xlYes,DataOption1:=Microsoft.Office.Interop.excel.XlSortDataOption.xlSortNormal,Orientation:=Microsoft.Office.Interop.excel.XlSortOrientation.xlSortColumns)&#xA;&#xA;&#xA;ws.Range(&quot;I:J&quot;).EntireColumn.Insert 'Insert 2 columns after H column&#xA;ws.Range(&quot;Z:AA:AB:AC&quot;).EntireColumn.Insert 'Insert 4 columns after Y column&#xA; wb=excel.Workbooks.Open(arg_GLOTemplatePath+&quot;GLO_&quot;+arg_CurrentMonth+&quot;’&quot;+arg_CurrentYear+&quot;_YTD_DASHBOARD.xlsb&quot;) 'Open GLO TAT template&#xA; excel.Visible=True&#xA;  excel.DisplayAlerts=False&#xA;  ws1=CType(wb.Sheets(&quot;Data&quot;),Microsoft.Office.Interop.Excel.Worksheet)&#xA;  ws1.Range(&quot;I1:J1&quot;).Copy 'copy column names from template&#xA;  With ws&#xA;   ws.Range(&quot;I1:J1&quot;).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteValues) 'And paste it in GLO All data file&#xA;    End With&#xA;&#xA;    ws1.Range(&quot;Z1:AC1&quot;).Copy&#xA;  With ws&#xA;   ws.Range(&quot;Z1:AC1&quot;).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteValues)&#xA;    &#xA;  End With&#xA;  Try&#xA;  'ws.Range(&quot;A1:AR&quot;+lastRow.ToString).AutoFilter(Field:=ws.UsedRange.Find(&quot;Task Closed Date (Date)&quot;).Column,Criteria1:=&quot;&gt;=&quot;+arg_Start_Date,Operator:=microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlAnd,Criteria2:=&quot;&lt;=&quot;+arg_End_Date)&#xA; ws.Range(&quot;A1:AR&quot;+lastRow.ToString).AutoFilter(Field:=ws.UsedRange.Find(&quot;Task Closed Date (Date)&quot;).Column,Criteria1:=&quot;&gt;=&quot;+arg_Start_Date,Operator:=microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlFilterValues)&#xA;  ws.Range(&quot;A2:AR&quot;+lastRow.ToString).Delete&#xA; Dim count As Integer= ws.Range(&quot;1:1&quot;).Find(&quot;Task Closed Date (Date)&quot;).Column&#xA; &#xA;  ws.Range(&quot;A1:AR&quot;+lastRow.ToString).AutoFilter(count.ToString)&#xA;  Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; Throw es&#xA;End Try&#xA;  &#xA;  ws.Range(&quot;A1&quot;,&quot;AR&quot;+lastRow.ToString).AutoFilter(Field:=ws.UsedRange.Find(&quot;Task Closed Year&quot;).Column,Criteria1:={System.DateTime.Now.Year.ToString,(System.DateTime.Now.Year-1).ToString},Operator:=Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlFilterValues)'Filter for current year and previous year&#xA;  ws2=CType(wb1.Sheets.Add,Microsoft.Office.Interop.Excel.Worksheet)&#xA;   ws2.Name=&quot;TempSheet&quot;&#xA;    ws.UsedRange.Rows.Copy&#xA;   ws2.Range(&quot;A1&quot;).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteValues)&#xA;   ws2.Range(&quot;A2:AR&quot;+lastRow.ToString).Rows.Copy&#xA;  With ws1&#xA;   ws1.Range(&quot;A3&quot;).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteValues)&#xA;    End With&#xA;ws2.Delete&#xA;  &#xA;  &#xA;   &#xA;   'ws.UsedRange.Select&#xA;&#xA;  &#xA;  &#xA;&#xA;&#xA;&#xA;&#xA;'ws.Range(&quot;I1&quot;).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteValues) &#xA;'ws.Range(&quot;A2&quot;,&quot;AR&quot;+lastRow.ToString).Copy&#xA;Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; Throw es&#xA;Finally&#xA; wb.Save&#xA; wb1.Save&#xA; wb.Close&#xA; wb1.Close&#xA; excel.Quit&#xA; &#xA;End Try&#xA;&#xA; " DisplayName="Invoke Code" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_Start_Date">[in_StartDate]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_End_Date">[in_EndDate]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_GLOTemplatePath">[in_GLOTemplatePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_CurrentMonth">[in_CurrentFiscalMonth]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_CurrentYear">[in_CurrentFiscalYear]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_downloadPath">[in_DownloadPath]</InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim wb1 As Microsoft.Office.Interop.Excel.Workbook&#xA;Dim excel As microsoft.Office.Interop.Excel.Application&#xA;Dim ws As Microsoft.Office.Interop.Excel.Worksheet&#xA;Dim rng As Microsoft.Office.Interop.Excel.Range &#xA;Dim lastRow As Integer&#xA;Try&#xA; excel = New Microsoft.Office.Interop.Excel.ApplicationClass'create the instance of excel work book'&#xA; wb1=excel.Workbooks.Open(arg_GLOTemplatePath+&quot;GLO_&quot;+arg_CurrentMonth+&quot;’&quot;+arg_CurrentYear+&quot;_YTD_DASHBOARD.xlsb &quot;)&#xA; excel.Visible=True&#xA; &#xA; ws=CType(wb1.Sheets(&quot;Data&quot;),Microsoft.Office.Interop.Excel.Worksheet)'select a sheet and activiates'&#xA; ws.Activate&#xA;excel.DisplayAlerts=False&#xA; lastRow = ws.UsedRange.Rows.Count&#xA; &#xA; ws.Range(&quot;Z2:AC2&quot;).Copy&#xA; ws.Range(&quot;Z3&quot;,&quot;AC&quot;+lastRow.ToString).PasteSpecial(Microsoft.Office.Interop.Excel.XlPasteType.xlPasteFormulasAndNumberFormats) &#xA;ws.Range(&quot;A2&quot;).EntireRow.Delete&#xA;&#xA;Try&#xA;ws.Range(&quot;A1:AR&quot;+lastRow.ToString).AutoFilter(ws.UsedRange.Find(&quot;Task Closed Date&quot;).Column,&quot;=&quot;,Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlFilterValues)&#xA;Dim BlankSpecialcell1 As Integer =ws.UsedRange.Rows.Count&#xA;&#xA;'Dim BlankSpecialcell2 As Integer =ws.Range(&quot;2:&quot;+BlankSpecialcell1.ToString).o&#xA; 'system.Windows.MessageBox.Show(BlankSpecialcell2.ToString)&#xA; 'system.Windows.MessageBox.Show(&quot;blank task closed date&quot;)&#xA;'ws.Range(&quot;Z:AC&quot;+BlankSpecialcell1.ToString).SpecialCells(microsoft.Office.Interop.Excel.XlCellType.xlCellTypeVisible).Select&#xA;ws.Range(&quot;Z2:AC&quot;+BlankSpecialcell1.ToString).Rows.Delete&#xA;'system.Windows.MessageBox.Show(&quot;blank filled task closed Date&quot;)&#xA;ws.Range(&quot;A1&quot;).AutoFilter(25)&#xA;Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; Throw es&#xA;End Try&#xA;Try&#xA; ws.Range(&quot;A1:AR&quot;+lastRow.ToString).AutoFilter(ws.UsedRange.Find(&quot;Item Category&quot;).Column,&quot;=&quot;,Microsoft.Office.Interop.Excel.XlAutoFilterOperator.xlFilterValues)&#xA; &#xA; Dim BlankSpecialcell As Integer=ws.UsedRange.Rows.Count&#xA;&#xA;'ws.UsedRange.Select&#xA; ws.Range(&quot;O2:O&quot;+BlankSpecialcell.ToString).Rows.Value=&quot;Order Laptops&quot;&#xA;&#xA; ws.Range(&quot;A1&quot;).AutoFilter(15)&#xA;Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; Throw es&#xA;End Try&#xA;&#xA;&#xA;'system.Windows.MessageBox.Show(&quot;blank task closed date&quot;)&#xA; 'ws.Range(&quot;A1&quot;).AutoFilter(15)&#xA;'console.WriteLine(&quot;filter removed&quot;)&#xA;&#xA;Catch es As Exception&#xA; Console.WriteLine(es.Message)&#xA; Throw es&#xA; Finally&#xA;  wb1.Save&#xA;  wb1.Close&#xA;  excel.Quit&#xA;End Try&#xA; " DisplayName="Invoke Code" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_GLOTemplatePath">[in_GLOTemplatePath]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_CurrentMonth">[in_CurrentFiscalMonth]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="arg_CurrentYear">[in_CurrentFiscalYear]</InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:LogMessage DisplayName="Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="Filteration completed" />
+    <sads:DebugSymbol.Symbol>d25DOlxVc2Vyc1xzdmNfYm90cGQxNlxEb2N1bWVudHNcVWlQYXRoXEdMTyBUQVQgRGFzaGJvYXJkIEF1dG9tYXRpb25cQ3VzdG9tIFdvcmtmbG93c1xXb3JraW5nd2l0aEdMT0FsbERhdGEueGFtbBZmA4YBDgIBAWoFavUBAgEhawVxFQIBGnIFco0BAgEYcwV8FQIBC30FgwEVAgEEhAEFhAGMAQIBAmpyavIBAgEib0hvXgIBH25JbmACAR1tTG1gAgEbcnJyigECARl5SHleAgEWdUd1VQIBFHhJeGACARJ3THdgAgEQekl6WgIBDnZFdlECAQyBAUiBAV4CAQmAAUmAAWACAQd/TH9gAgEFhAFyhAGJAQIBAw==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LogMessage_8" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
+      <sap2010:ViewStateData Id="InvokeCode_4" sap:VirtualizedContainerService.HintSize="314.4,164.8" />
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
+      <sap2010:ViewStateData Id="InvokeCode_1" sap:VirtualizedContainerService.HintSize="314.4,164.8" />
+      <sap2010:ViewStateData Id="InvokeCode_2" sap:VirtualizedContainerService.HintSize="314.4,164.8" />
+      <sap2010:ViewStateData Id="LogMessage_7" sap:VirtualizedContainerService.HintSize="314.4,92.8" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336.8,1097.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WorkingwithGLOAllData_1" sap:VirtualizedContainerService.HintSize="376.8,1177.6" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
